@@ -20,15 +20,15 @@
   }
 
   body.light-mode {
-    --bg: #f5f5f0;
-    --surface: #ececе6;
-    --surface: #e8e8e2;
-    --surface2: #ddddd8;
-    --border: #ccccс6;
-    --border: #c8c8c2;
+    --bg: #f4f4ef;
+    --surface: #eaeae5;
+    --surface2: #d8d8d3;
+    --border: #c4c4be;
     --text: #1a1a18;
     --muted: #555550;
-    --dim: #999990;
+    --dim: #888880;
+    --accent: #5a8a00;
+    --accent3: #0080a8;
   }
 
   /* Theme Toggle */
@@ -39,10 +39,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    cursor: pointer !important;
+    pointer-events: all !important;
     transition: all 0.2s;
     flex-shrink: 0;
     font-size: 1.1rem;
+    position: relative;
+    z-index: 200;
   }
   .theme-toggle:hover {
     border-color: var(--accent);
@@ -61,6 +64,7 @@
     line-height: 1.7;
     overflow-x: hidden;
     cursor: none;
+    transition: background 0.3s, color 0.3s;
   }
 
   /* Custom Cursor */
@@ -1193,7 +1197,7 @@
     <li><a href="#achievements">Wins</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">🌙</button>
+  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" onclick="document.body.classList.toggle('light-mode'); this.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';">🌙</button>
 </nav>
 
 <!-- ===== HERO ===== -->
@@ -1584,7 +1588,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Theme toggle
   const toggleBtn = document.getElementById('themeToggle');
   toggleBtn.addEventListener('click', () => {
